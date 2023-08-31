@@ -8,6 +8,7 @@
 
 class Camera {
 public:
+    Camera();
     Camera(Matrix cameraToWorld, int canvasWidth, int canvasHeight);
     Camera(int canvasWidth, int canvasHeight);
     Point getCanvasCoordinates(Point point) const;

@@ -97,3 +97,24 @@ void Camera::moveForward(double distance) {
     cameraToWorld.setValueAt(2, 3, cameraToWorld.getValueAt(2, 3) - distance);
     worldToCamera = cameraToWorld.getInverse();
 }
+
+Camera::Camera() {
+    // TODO: define width and height as constants
+    pixelWidth = 640;
+    pixelHeight = 480;
+    std::vector<double> values {1, 0, 0, 0,
+                                0, 1, 0, 0,
+                                0, 0, 1, 0,
+                                0, 0, 0, 1};
+    cameraToWorld = Matrix(4, 4, values.begin(), values.end());
+    worldToCamera = cameraToWorld;
+    if(pixelWidth >= pixelHeight){
+        canvasHeight = 1.0;
+        canvasWidth = static_cast<double>(pixelWidth) / static_cast<double>(pixelHeight);
+    }
+    else{
+        canvasWidth = 1.0;
+        canvasHeight = static_cast<double>(pixelHeight) / static_cast<double>(pixelWidth);
+    }
+    distanceToCanvas = 1;
+}

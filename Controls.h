@@ -3,6 +3,7 @@
 
 #include "Camera.h"
 #include "Screen.h"
+#include "Point.h"
 
 class Controls {
 public:
@@ -11,6 +12,7 @@ public:
 private:
     Screen screen;
     Camera camera;
+    void handleKeys(const SDL_Event& event);
 };
 
 
