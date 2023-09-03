@@ -1,11 +1,9 @@
 #include "Controls.h"
 
-#include <utility>
 #include "SDL2/SDL.h"
 
-Controls::Controls(const Screen& s, const Camera& c) {
-    screen = s;
-    camera = c;
+Controls::Controls(const Animation& a) {
+    animation = a;
 }
 
 void Controls::handleInput() {
@@ -18,23 +16,24 @@ void Controls::handleInput() {
 }
 
 void Controls::handleKeys(const SDL_Event &event) {
-    // TODO: seconds and move speed
-    double moveSpeed = 1;
-    int seconds = 1000;
     switch (event.key.keysym.sym) {
         case SDLK_w:
-            camera.moveForward(moveSpeed);
-            screen.updateScreen()
-            SDL_Delay(seconds);
+            animation.moveForward();
+            break;
         case SDLK_a:
-            camera.moveLeft(moveSpeed);
-            SDL_Delay(seconds);
+            animation.moveLeft();
+            break;
         case SDLK_d:
-            camera.moveRight(moveSpeed);
-            SDL_Delay(seconds);
+            animation.moveRight();
+            break;
         case SDLK_s:
-            camera.moveBackward(moveSpeed);
-            SDL_Delay(seconds);
-
+            animation.moveBackward();
+            break;
+        case SDLK_UP:
+            animation.moveUp();
+            break;
+        case SDLK_DOWN:
+            animation.moveDown();
+            break;
     }
 }

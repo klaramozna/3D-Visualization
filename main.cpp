@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "Camera.h"
 #include "Point.h"
+#include "Controls.h"
 #include <unistd.h>
 
 std::vector<Point> createRectangle(Point corner, int size){
@@ -41,11 +42,13 @@ int main() {
     connectRectangle(perspective, s);
 
     SDL_Event event;
+    Controls controls = Controls(s, c);
     bool running = true;
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) running = false;
         }
+        controls.handleInput();
     }
     return 0;
 }

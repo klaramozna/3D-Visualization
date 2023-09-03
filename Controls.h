@@ -1,17 +1,14 @@
 #ifndef INC_3DSDL1_CONTROLS_H
 #define INC_3DSDL1_CONTROLS_H
 
-#include "Camera.h"
-#include "Screen.h"
-#include "Point.h"
+#include "Animation.h"
 
 class Controls {
 public:
-    Controls(const Screen& s, const Camera& c);
+    explicit Controls(const Animation& a);
     void handleInput();
 private:
-    Screen screen;
-    Camera camera;
+    Animation animation;
     void handleKeys(const SDL_Event& event);
 };
 
